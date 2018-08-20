@@ -1,0 +1,63 @@
+
+
+
+
+<html>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script >
+
+
+      function calcular(){
+
+        var socket = io()
+        var x = $('#numero1').val();
+        var y = $('#numero2').val();
+        var op = $('#operacion').val();
+
+        socket.emit('operar',op);
+        $('#numero1').val('');
+        $('#numero2').val('');
+
+
+        socket.on('resultado', function(msg){
+          alert(msg)
+        });
+      }
+
+  </script>
+
+<body>
+
+
+<form action="">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">TAREA CLIENTE SERVIDOR</label>
+    <br />
+    <input type="number" class="form-control" id="numero1" placeholder="ingrese numero 1">
+    <br />
+    <input type="number" class="form-control" id="numero2" placeholder="ingrese numero 2">
+    </div>
+    <br />
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Seleccione operación</label>
+    <select class="form-control" id="operacion">
+      <option>+</option>
+      <option>-</option>
+      <option>*</option>
+      <option>/</option>
+      <option>log</option>
+      <option>rad</option>
+      <option>pow</option>
+    </select>
+  </div>
+    <button type="button" class="btn btn-dark" onclick="calcular()">Enviar</button>
+</form>
+
+
+  </body>
+</html>
