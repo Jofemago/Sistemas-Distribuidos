@@ -5,25 +5,25 @@ import SocketServer
 def direccionamiento(operacion):
 
     if operacion == '+':
-        return ['localhost', '8000']
+        return 'localhost' + " "  + '8004'
 
-    if operacion == '-':
-        return ['localhost', '9000']
+    elif operacion == '-':
+        return 'localhost' + " "  + '9000'
 
-    if operacion == '/':
-        return ['localhost', '10000']
+    elif operacion == '/':
+        return 'localhost' + " "  + '10000'
 
-    if operacion == '*':
-        return ['localhost', '11000']
+    elif operacion == '*':
+        return 'localhost' + " "  + '11000'
 
-    if operacion == 'log':
-        return ['localhost', '12000']
+    elif operacion == 'log':
+        return 'localhost' + " "  + '12001'
 
-    if operacion == 'rad':
-        return ['localhost', '13000']
+    elif operacion == 'rad':
+        return 'localhost' + " "  + '13000'
 
-    if operacion == 'pow':
-        return ['localhost', '14000']
+    elif operacion == 'pow':
+        return 'localhost' + " "  + '14000'
 
 class miHandler(SocketServer.BaseRequestHandler):
 
@@ -37,14 +37,14 @@ class miHandler(SocketServer.BaseRequestHandler):
 
         res = direccionamiento(self.paquete)
         print(res)
-        self.request.send(res[0] + " " + res[1])
+        self.request.send(res)
 
 
 def main():
 
     print("Socket con direccionamiento")
     host = "localhost"
-    puerto = 7006
+    puerto = 7003
 
     server1 = SocketServer.TCPServer((host, puerto), miHandler)
     print("servidor corriendo")
