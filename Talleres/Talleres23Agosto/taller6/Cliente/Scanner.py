@@ -13,10 +13,20 @@ class Scanner:
 
         return self.nro1 + " " + self.nro2 + " " + self.operacion
 
+    def getNro1(self):
+
+        return int(self.nro1)
+
+
+    def getNro2(self):
+
+        return int(self.nro2)
+
 
     def getOperation(self):
 
         return self.operacion
+
 
     def ScanearOperacion(self):
 
