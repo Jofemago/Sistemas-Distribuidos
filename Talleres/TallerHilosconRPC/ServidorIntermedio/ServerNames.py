@@ -26,7 +26,7 @@ class ServerThread(threading.Thread):
 
 
 
-server = ServerThread(9999)
+server = ServerThread(9995)
 #server = ServerThread(9993)
 #server = ServerThread(9994)
 server.start() # The server is now running

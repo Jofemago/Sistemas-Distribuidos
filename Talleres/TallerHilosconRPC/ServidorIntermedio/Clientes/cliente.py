@@ -14,7 +14,7 @@ class ClientThread(threading.Thread):
     def __init__(self):
     	self.sc=Scanner()
     	threading.Thread.__init__(self)
-    	self.s = xmlrpclib.ServerProxy('http://localhost:9999')
+    	self.s = xmlrpclib.ServerProxy('http://localhost:9995')
         self.sop = None #servidor que realiza las operaciones
 
 
@@ -25,9 +25,11 @@ class ClientThread(threading.Thread):
 
     def run(self):
 		#time.sleep(3)
-        print "Llamada cliente1 "
-        print self.s.getServer(self.sc.getOperation())
-        #print self.toString()
+		print "Llamada cliente1 "
+		url = self.s.getServer(self.sc.getOperation())
+		serverop = xmlrpclib.ServerProxy(url)
+		print(serverop.op(int(self.sc.getNro1()), int(self.sc.getNro2())))
+		#print self.toString()
 		#print  "La operacion ",self.sc.getNro1()," ",self.sc.getOperation()," ",self.sc.getNro2()," = ",mekeOperation(self.sc,self.s)
 		#print "Esto da: ",self.s.div(5,2)  # Returns 5//2 = 2
 		#print self.s.add(7,2)
