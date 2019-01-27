@@ -15,6 +15,7 @@ class ClientThread(threading.Thread):
     	self.sc=Scanner()
     	threading.Thread.__init__(self)
     	self.s = xmlrpclib.ServerProxy('http://localhost:9999')
+        self.sop = None #servidor que realiza las operaciones
 
 
 

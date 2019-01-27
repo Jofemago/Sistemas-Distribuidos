@@ -8,6 +8,7 @@ import xmlrpclib
 import time
 
 
+
 class MyFuncts:
     def add(self,numero1,numero2):
         return int(numero1) + int(numero2)
